@@ -131,11 +131,11 @@ window.addEventListener('keydown', ev => {
         wait = true;
         setTimeout(function () {
             wait = false;
-          }, 1000/fps);
+          }, 1000/fps/2);
     }
 });
 
-const re = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/i;
+// const re = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/i;
 const optionsSubmit = document.querySelector('form.options input[type="submit"]');
 const bgColorInput = document.querySelector('#bgColor');
 const firstColorInput = document.querySelector('#snF');
@@ -145,21 +145,14 @@ firstColorInput.value = firstColor;
 secondColorInput.value = firstColor; 
 optionsSubmit.addEventListener('click', ev=>{
     ev.preventDefault();
-    if(re.test(bgColorInput.value))
-        bgColor = bgColorInput.value;
-    else 
-        throw new Error('Zły format bg');
-    if(re.test(firstColorInput.value))
-        firstColor = firstColorInput.value;
-    else 
-        throw new Error('Zły format fc');
+    bgColor = bgColorInput.value;
+    firstColor = firstColorInput.value;
     if(secondColorInput.value != ""){
-        console.log(secondColorInput.value)
-        if(re.test(secondColorInput.value))
-            secondColor = secondColorInput.value;
-        else 
-            throw new Error('Zły format sc');
+        secondColor = secondColorInput.value;
     } else {
         secondColor = firstColor;
     }
+    ctx.clearRect(0,0,ctxWidth, ctxHeight);
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0,0,ctxWidth,ctxHeight);
 });

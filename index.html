@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>SNEJK</title>
     <style>
+        *{
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
             background-image: linear-gradient(to right, #136a8a, #267871);
             height: 100vh;
+            overflow: hidden;
         }
         canvas {
             border: 20px solid black;
@@ -86,6 +90,20 @@
         input[type="submit"] {
             cursor: pointer;
         }
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            /* flex-basis: 100%; */
+            /* display:block; */
+            width: 100%;
+            height: 35px;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -101,11 +119,11 @@
         <i class="fas fa-times options"></i>
         <form class="options">
             <label for="bgColor">Wybierz kolor tła:</label>
-            <input type="text" id="bgColor" pattern="#[a-fA-F1-9]{6}">
+            <input type="color" id="bgColor">
             <label for="snF">Wybierz kolor węża:</label>
-            <input type="text" id="snF" pattern="#[a-fA-F1-9]{6}">
+            <input type="color" id="snF">
             <label for="snT">Wybierz drugi kolor węża (opcjonalnie):</label>
-            <input type="text" id="snT" pattern="#[a-fA-F1-9]{6}">
+            <input type="color" id="snT">
             <input type="submit" value="Zapisz">
         </form>
     </section>
