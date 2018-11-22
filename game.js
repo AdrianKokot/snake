@@ -121,10 +121,15 @@ window.addEventListener('keydown', ev => {
             interval = setInterval(game, 1000/fps);
             spanResult.textContent = total;
         } else {
+            // console.log(ev.keyCode);
             switch(ev.keyCode){
+                case 65:
                 case 37: if(xVelocity != 1){xVelocity = -1; yVelocity = 0;} break;
+                case 87:
                 case 38: if(yVelocity != 1){xVelocity = 0; yVelocity = -1;} break;
+                case 68:
                 case 39: if(xVelocity != -1){xVelocity = 1; yVelocity = 0;} break;
+                case 83:
                 case 40: if(yVelocity != -1){xVelocity = 0; yVelocity = 1;} break;
             }
         }
