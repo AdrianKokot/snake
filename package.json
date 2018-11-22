@@ -1,0 +1,25 @@
+{
+  "name": "multi-snake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrianKokot/multi-snake.git"
+  },
+  "author": "Adrian Kokot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrianKokot/multi-snake/issues"
+  },
+  "homepage": "https://github.com/AdrianKokot/multi-snake#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.13"
+  }
+}
