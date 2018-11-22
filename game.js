@@ -2,9 +2,9 @@ const size = 20;
 const ctxWidth = size * 20, ctxHeight = size * 20;
 const fps = 15;
 
-let bgColor = "#a5d6a7";
-let firstColor = "#689f38";
-let secondColor = firstColor;
+let bgColor = localStorage.getItem('bgColor') || "#a5d6a7";
+let firstColor = localStorage.getItem('firstColor') || "#689f38";
+let secondColor = localStorage.getItem('secondColor') || firstColor;
 
 const btnOptions = document.querySelector('i.options');
 const modalOptions = document.querySelector('section.options');
@@ -135,16 +135,17 @@ window.addEventListener('keydown', ev => {
     }
 });
 
-// const re = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/i;
 const optionsSubmit = document.querySelector('form.options input[type="submit"]');
 const bgColorInput = document.querySelector('#bgColor');
 const firstColorInput = document.querySelector('#snF');
 const secondColorInput = document.querySelector('#snT');
+const localStorageInput = document.querySelector('#local');
 bgColorInput.value = bgColor;
 firstColorInput.value = firstColor; 
 secondColorInput.value = firstColor; 
 optionsSubmit.addEventListener('click', ev=>{
     ev.preventDefault();
+    
     bgColor = bgColorInput.value;
     firstColor = firstColorInput.value;
     if(secondColorInput.value != ""){
@@ -155,4 +156,9 @@ optionsSubmit.addEventListener('click', ev=>{
     ctx.clearRect(0,0,ctxWidth, ctxHeight);
     ctx.fillStyle = bgColor;
     ctx.fillRect(0,0,ctxWidth,ctxHeight);
+    if(localStorageInput.checked){
+        localStorage.setItem('bgColor', bgColor);
+        localStorage.setItem('firstColor', firstColor);
+        localStorage.setItem('secondColor', secondColor);
+    }
 });
