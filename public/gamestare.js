@@ -47,11 +47,10 @@ const game = () => {
     ctx.fillStyle = bgColor;
     ctx.fillRect(0,0,ctxWidth,ctxHeight);
     if(start){
-        // ctx.clearRect(snake[0].posx, snake[0].posy, size, size);
         snake.pop();
-        
     }
     start = true;
+
     posx += xVelocity * size;
     posy += yVelocity * size;
 
@@ -136,7 +135,7 @@ window.addEventListener('keydown', ev => {
         wait = true;
         setTimeout(function () {
             wait = false;
-          }, 1000/fps/2);
+          }, 1000/fps);
     }
 });
 

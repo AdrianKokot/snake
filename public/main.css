@@ -68,6 +68,7 @@ form.options {
     flex-direction: column;
     font-size: 20px;
     padding: 35px 0 20px;
+    width: calc(100% - 70px);
 }
 form.options input {
     margin: 5px 0;
@@ -97,7 +98,7 @@ label[for="local"]{
 input#local {
     position: absolute;
     top: 50%;
-    right: 60px;
+    right: 30px;
     transform: translateY(-50%);
     padding: 0;
     margin: 0;
