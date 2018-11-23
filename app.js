@@ -41,8 +41,8 @@ app.get('/*', (req, res) => {
 app.post('/*', (req, res) => {
     req.body.user.body = req.sanitize(req.body.user.body);
     User.findOne({username: req.body.user.username}, (err,foundUser)=>{
-        console.log(req.body.user.username, req.body.user.score, foundUser);
-        if(foundUser){
+        // console.log(req.body.user.username, req.body.user.score, foundUser);
+        if(!err){
             if(foundUser.score < req.body.user.score){
                 User.findOneAndUpdate({_id: foundUser._id}, {score: req.body.user.score}, (err)=>{console.log('update')});
             }
