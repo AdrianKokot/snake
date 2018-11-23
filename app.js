@@ -45,12 +45,12 @@ app.post('/*', (req, res) => {
         if(foundUser){
             if(foundUser.score < req.body.user.score){
                 User.findOneAndUpdate({_id: foundUser._id}, {score: req.body.user.score}, (err)=>{console.log('update')});
-                res.redirect('/');
             }
         } else {
             const newUser = new User(req.body.user);
             newUser.save().then(res.redirect("/"));
         }
+        res.redirect('/');
     });
 });
 
