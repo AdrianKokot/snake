@@ -40,10 +40,18 @@ app.get('/*', (req, res) => {
 
 app.post('/*', (req, res) => {
     req.body.user.body = req.sanitize(req.body.user.body);
-    const newUser = new User(req.body.user);
-    // console.log(req.body.user);
-    newUser.save().then(res.redirect("/"));
-    // console.log(newUser);
+    User.findOne({username: req.body.user.username}, (err,foundUser)=>{
+        console.log(req.body.user.username, req.body.user.score, foundUser);
+        if(foundUser){
+            if(foundUser.score < req.body.user.score){
+                User.findOneAndUpdate({_id: foundUser._id}, {score: req.body.user.score}, (err)=>{console.log('update')});
+                res.redirect('/');
+            }
+        } else {
+            const newUser = new User(req.body.user);
+            newUser.save().then(res.redirect("/"));
+        }
+    });
 });
 
 app.listen(port, () => {
