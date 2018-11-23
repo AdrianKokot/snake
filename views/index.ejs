@@ -17,11 +17,18 @@
             <canvas></canvas>
     </section>
     <section class="rank">
-
+        <ul>
+            <% users.forEach((user, idx)=>{ %>
+            <% if(idx<5) {%>
+                <li>
+                    <span class="name"><%= user.username %></span><span class="score"><%= user.score %></span>
+                </li>
+            <% }}); %>
+        </ul>
     </section>
     <section class="options">
         <i class="fas fa-times options"></i>
-        <form class="options">
+        <form>
             <label for="bgColor">Wybierz kolor tła:</label>
             <input type="color" id="bgColor">
             <label for="snF">Wybierz kolor węża:</label>
@@ -31,6 +38,17 @@
             <label for="apple">Wybierz kolor jabłka:</label>
             <input type="color" id="apple">
             <label for="local">Zapis w pamięci przeglądarki?<input type="checkbox" name="localStorage" id="local" checked></label>
+            <input type="submit" value="Zapisz">
+        </form>
+    </section>
+    <section class="lose">
+        <form action="/" method="POST">
+            <span>
+                <label for="user[score]">Twój wynik: </label>
+                <input type="number" class="score" name="user[score]" id="user[score]" readonly>        
+            </span>
+            <label for="user[username]">Podaj nazwę:</label>
+            <input type="text" id="user[username]" name="user[username]" placeholder="Twoja nazwa">
             <input type="submit" value="Zapisz">
         </form>
     </section>

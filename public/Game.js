@@ -57,7 +57,8 @@ class Game {
         }, 1000);
     }
     stop(){
-        window.alert('PRZEGRANA');
+        document.querySelector('section.lose').classList.add('active');
+        document.querySelector('input.score').value = this.player.tail.length;
         this.reset();
     }
 }

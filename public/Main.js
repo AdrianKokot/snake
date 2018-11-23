@@ -2,10 +2,10 @@ class AppControl{
     constructor(fps, crates, size){
         this.fps = fps;
         this.wait = false;
-        this.bgColor = localStorage.getItem('bgColor') || "#C6FFC3"
-        this.firstColor = localStorage.getItem('firstColor') || "#8CE80F";
-        this.secondColor  = localStorage.getItem('secondColor') || this.firstColor;
-        this.appleColor = localStorage.getItem('appleColor') || "#FFF60A";
+        this.bgColor = localStorage.getItem('bgColor') || "#F1C26D"
+        this.firstColor = localStorage.getItem('firstColor') || "#517AAC";
+        this.secondColor  = localStorage.getItem('secondColor') || "#142F50";
+        this.appleColor = localStorage.getItem('appleColor') || "#a30000";
 
         this.game = new Game(crates, size, fps, document.querySelector('span'), this.bgColor, this.firstColor, this.secondColor, this.appleColor);
         this.game.drawBackground();
@@ -13,7 +13,8 @@ class AppControl{
         this.btnOptions = document.querySelector('i.options');
         this.btnOptionsClose = document.querySelector('section.options i');
         this.optionsModal = document.querySelector('section.options');
-        this.optionsSubmit = document.querySelector('form.options input[type="submit"]');
+        this.optionsSubmit = document.querySelector('section.options input[type="submit"]');
+        this.loseSubmit = document.querySelector('section.lose input[type="submit"]');
         this.inputBgColor = document.querySelector('#bgColor');
         this.inputFirstColor = document.querySelector('#snF');
         this.inputSecondColor = document.querySelector('#snT');
@@ -39,7 +40,7 @@ class AppControl{
                 localStorage.setItem('secondColor', this.secondColor);
                 localStorage.setItem('appleColor', this.appleColor);
             }
-        })
+        });
         this.btnOptions.addEventListener('click', ()=>{this.optionsModal.classList.add('active')});
         this.btnOptionsClose.addEventListener('click', ()=>{this.optionsModal.classList.remove('active')})
         window.addEventListener('keydown', this.gameListener.bind(this));
