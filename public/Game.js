@@ -53,7 +53,6 @@ class Game {
             this.drawBackground();
             delete this.player;
             delete this.apple;
-            this.started = false;
         }, 1000);
     }
     stop(){
