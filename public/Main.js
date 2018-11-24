@@ -21,6 +21,7 @@ window.onload = () => {
             this.inputSecondColor = document.querySelector('#snT');
             this.inputAppleColor = document.querySelector('#apple');
             this.inputLocalStorage = document.querySelector('#local');
+            this.inputUsernameLose = document.querySelector('section.lose input[type="text"]');
     
             this.inputBgColor.value = this.bgColor;
             this.inputFirstColor.value = this.firstColor;
@@ -41,6 +42,31 @@ window.onload = () => {
                     localStorage.setItem('secondColor', this.secondColor);
                     localStorage.setItem('appleColor', this.appleColor);
                 }
+            });
+            this.loseSubmit.addEventListener('click', (ev)=>{
+                ev.preventDefault();
+                const score = this.game.player.tail.length,
+                    username = this.inputUsernameLose.value;
+                const reqBody = {
+                    username: username,
+                    score: score
+                }
+                fetch("/", {
+                    method: "POST",
+                    body: JSON.stringify(reqBody),
+                    headers: {
+                        'Accept': 'application/json',
+                        "Content-Type": "application/json"
+                    }
+                }).then((res)=>{
+                    if(res.ok){
+                        return res.json();
+                    } else {
+                        throw new Error ('Fetch');
+                    }
+                }).then(json => {
+                    console.log(json);
+                });
             });
             this.btnOptions.addEventListener('click', ()=>{this.optionsModal.classList.add('active')});
             this.btnOptionsClose.addEventListener('click', ()=>{this.optionsModal.classList.remove('active')})

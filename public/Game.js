@@ -51,8 +51,12 @@ class Game {
         clearInterval(this.interval);
         setTimeout(()=>{
             this.drawBackground();
-            delete this.player;
-            delete this.apple;
+            // delete this.player;
+            // delete this.apple;
+            this.started = false;
+            setTimeout(()=>{
+                this.started = true;
+            },10);
         }, 1000);
     }
     stop(){
