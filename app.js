@@ -40,6 +40,9 @@ app.get('/*', (req, res) => {
 
 app.post('/*', (req, res) => {
     req.body.user.body = req.sanitize(req.body.user.body);
+    if(req.body.user.username.length > 10){
+        req.body.user.username = req.body.user.username.slice(0,10);
+    }
     User.findOne({username: req.body.user.username}, (err,foundUser)=>{
         if(err) console.log(err);
         if(foundUser){
