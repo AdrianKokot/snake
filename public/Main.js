@@ -59,13 +59,9 @@ window.onload = () => {
                         "Content-Type": "application/json"
                     }
                 }).then((res)=>{
-                    if(res.ok){
-                        return res.json();
-                    } else {
+                    if(!res.ok){
                         throw new Error ('Fetch');
                     }
-                }).then(json => {
-                    console.log(json);
                 });
             });
             this.btnOptions.addEventListener('click', ()=>{this.optionsModal.classList.add('active')});
