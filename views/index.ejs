@@ -57,8 +57,12 @@
     <script src="Game.js"></script>
     <script src="Main.js"></script>
     <script>
-        const main = new AppControl(15, 20, 20);
-        const special = main.game.stop.bind(main.game);
+        const main = function() {
+            let main = new AppControl(15, 20, 20);
+            return function(){
+                return 0;
+            }
+        }();
     </script>
 </body>
 </html>
