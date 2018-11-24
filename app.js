@@ -40,14 +40,12 @@ app.get('/*', (req, res) => {
 });
 
 app.post('/*', (req, res) => {
-    // req.body.user.body = req.sanitize(req.body.user.body);
     if(req.body.username.length > 10){
         req.body.username = req.body.username.slice(0,10);
     }
     User.findOne({username: req.body.username}, (err,foundUser)=>{
         if(err) console.log(err);
         if(foundUser){
-            // console.log(foundUser);
             if(foundUser.score < req.body.score){
                 User.findOneAndUpdate({_id: foundUser._id}, {score: req.body.score}, (err)=>{console.log('update')});
             }
@@ -55,7 +53,6 @@ app.post('/*', (req, res) => {
             const newUser = new User(req.body);
             newUser.save();
         }
-        res.redirect('/');
     });
 });
 
